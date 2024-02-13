@@ -1,0 +1,49 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group = 'yt.quadrix.uuid'
+version = '1.0'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation('org.projectlombok:lombok:1.18.22')
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    compileOnly("mysql:mysql-connector-java:5.1.13")
+    compileOnly 'org.mongodb:mongodb-driver-sync:4.1.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            groupId = 'yt.quadrix.uuid'
+            artifactId = 'UUIDApi'
+            version = '1.0'
+        }
+    }
+    repositories {
+        maven {
+            url = uri('https://nexus.q-development.de/repository/quadrixyt/')
+            /*credentials {
+                username = "quadrixyt"
+                password = "quadrixyt"
+            }*/
+            credentials {
+                username = "admin"
+                password = "8SWubEG3g]]=PQ?"
+            }
+        }
+    }
+}
