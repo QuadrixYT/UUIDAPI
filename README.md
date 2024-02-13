@@ -68,14 +68,14 @@ uuidApi.insert("01234567-89ab-cdef-0123-456789abcdef", "player123");
 uuidApi.stop();
 ```
 
-Feel free to explore and adapt the code according to your needs. For additional information, refer to the Javadoc in the source code.
-
 Please make sure to replace the placeholder connection strings with your actual database connection details.
-UUID Database API
 
 -----------
 # 
 -----------
+
+
+UUID Database API
 
 Dieses Repository bietet eine einfache API zum Verwalten von Spieler-UUIDs unter Verwendung verschiedener Datenbanksysteme. Derzeit unterstützt es MongoDB- und MySQL-Datenbanken. Das Hauptziel besteht darin, das Abrufen und Speichern von Spieler-UUIDs zu erleichtern.
 Verwendung
@@ -146,7 +146,5 @@ uuidApi.insert("01234567-89ab-cdef-0123-456789abcdef", "player123");
 
 uuidApi.stop();
 ```
-
-Entdecken Sie den Code und passen Sie ihn nach Bedarf an. Weitere Informationen finden Sie in der Javadoc im Quellcode.
 
 Bitte stellen Sie sicher, dass Sie die Platzhalter-Verbindungszeichenfolgen durch Ihre tatsächlichen Datenbankverbindungsdetails ersetzen.
