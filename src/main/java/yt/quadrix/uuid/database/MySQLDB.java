@@ -91,7 +91,7 @@ public class MySQLDB implements Database {
         try {
             // UUID in die Datenbank einfügen
             String insertQuery = "INSERT INTO player_uuids (player, uuid) VALUES (?, ?)";
-
+            if (getUUIDStringByPlayer(playerName) != null) return;
             try (Connection connection = DriverManager.getConnection(connectionString);
                  PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
                 preparedStatement.setString(1, playerName);
