@@ -18,12 +18,11 @@ public class UUIDApi {
     public UUIDApi(DatabaseType databaseType, String connectionString) {
         this.databaseType = databaseType;
         UUIDApi.connectionString = connectionString;
-        if(this.databaseType == DatabaseType.MONGO) {
-            this.database = new MognoDB();
+        if (this.databaseType == DatabaseType.MONGO) {
+            this.database = new MongoDB();
         } else {
             this.database = new MySQLDB();
         }
-        this.database = databaseType.getDatabaseClass().getDeclaredConstructor().newInstance();
     }
 
     public String getByUUID(String uuid) {
