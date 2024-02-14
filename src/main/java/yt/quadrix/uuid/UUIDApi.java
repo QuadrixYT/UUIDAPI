@@ -2,8 +2,7 @@ package yt.quadrix.uuid;
 
 import lombok.Getter;
 import lombok.SneakyThrows;
-import yt.quadrix.uuid.database.Database;
-import yt.quadrix.uuid.database.DatabaseType;
+import yt.quadrix.uuid.database.*;
 
 import java.util.UUID;
 
@@ -19,6 +18,11 @@ public class UUIDApi {
     public UUIDApi(DatabaseType databaseType, String connectionString) {
         this.databaseType = databaseType;
         UUIDApi.connectionString = connectionString;
+        if(this.databaseType == DatabaseType.MONGO) {
+            this.database = new MognoDB();
+        } else {
+            this.database = new MySQLDB();
+        }
         this.database = databaseType.getDatabaseClass().getDeclaredConstructor().newInstance();
     }
 
