@@ -42,6 +42,7 @@ public class MySQLDB implements Database {
 
     @Override
     public String getByUUID(String uuid) {
+        System.out.println("getByUUID(UUID)=" + uuid);
         try (Connection connection = DriverManager.getConnection(connectionString);
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT player FROM player_uuids WHERE uuid = ?")) {
             preparedStatement.setString(1, uuid);
@@ -56,6 +57,7 @@ public class MySQLDB implements Database {
 
     @Override
     public String getUUIDStringByPlayer(String player) {
+        System.out.println("getUUIDStringByPlayer(Player)=" + player);
         try (Connection connection = DriverManager.getConnection(connectionString);
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT uuid FROM player_uuids WHERE player = ?")) {
             preparedStatement.setString(1, player);
@@ -70,6 +72,7 @@ public class MySQLDB implements Database {
 
     @Override
     public UUID getUUIDByPlayer(String player) {
+        System.out.println("getUUIDByPlayer(Player)=" + player);
         try (Connection connection = DriverManager.getConnection(connectionString);
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT uuid FROM player_uuids WHERE player = ?")) {
             preparedStatement.setString(1, player);
@@ -84,6 +87,7 @@ public class MySQLDB implements Database {
 
     @Override
     public void insert(String uuid, String playerName) {
+        System.out.println("insert(UUID)=" + uuid + ", insert(Name)=" + playerName);
         try {
             // UUID in die Datenbank einfügen
             String insertQuery = "INSERT INTO player_uuids (player, uuid) VALUES (?, ?)";
@@ -93,6 +97,7 @@ public class MySQLDB implements Database {
                 preparedStatement.setString(1, playerName);
                 preparedStatement.setString(2, uuid);
                 preparedStatement.executeUpdate();
+                System.out.println("insert(UUID)=" + uuid + ", insert(Name)=" + playerName);
             }
         } catch (SQLException e) {
             e.fillInStackTrace();
