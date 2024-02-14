@@ -46,6 +46,7 @@ public class MySQLDB implements Database {
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT player FROM player_uuids WHERE uuid = ?")) {
             preparedStatement.setString(1, uuid);
             preparedStatement.execute();
+            System.out.println("getByUUID(Name)=" + preparedStatement.getResultSet().getString("player"));
             return preparedStatement.getResultSet().getString("player");
         } catch (SQLException e) {
             e.fillInStackTrace();
@@ -59,6 +60,7 @@ public class MySQLDB implements Database {
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT uuid FROM player_uuids WHERE player = ?")) {
             preparedStatement.setString(1, player);
             preparedStatement.execute();
+            System.out.println("getUUIDStringByPlayer(UUID)=" + preparedStatement.getResultSet().getString("uuid"));
             return preparedStatement.getResultSet().getString("uuid");
         } catch (SQLException e) {
             e.fillInStackTrace();
@@ -69,9 +71,10 @@ public class MySQLDB implements Database {
     @Override
     public UUID getUUIDByPlayer(String player) {
         try (Connection connection = DriverManager.getConnection(connectionString);
-        PreparedStatement preparedStatement = connection.prepareStatement("SELECT uuid FROM player_uuids WHERE player = ?")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT uuid FROM player_uuids WHERE player = ?")) {
             preparedStatement.setString(1, player);
             preparedStatement.execute();
+            System.out.println("getUUIDByPlayer(UUID)=" + preparedStatement.getResultSet().getString("uuid"));
             return UUID.fromString(preparedStatement.getResultSet().getString("uuid"));
         } catch (SQLException e) {
             e.fillInStackTrace();
