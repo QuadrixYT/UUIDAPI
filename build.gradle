@@ -17,7 +17,7 @@ dependencies {
     implementation('org.projectlombok:lombok:1.18.22')
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
     compileOnly("mysql:mysql-connector-java:5.1.13")
-    compileOnly 'org.mongodb:mongodb-driver-sync:4.1.1'
+    compileOnly 'org.mongodb:mongodb-driver-sync:4.11.1'
 }
 
 test {

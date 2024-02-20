@@ -41,9 +41,6 @@ public class MongoDB implements Database {
     @Override
     public void create() {
         // Tabelle für UUIDs erstellen, wenn sie nicht existiert
-        MongoCollection<Document> collection = database.getCollection("player_uuids");
-        collection.createIndex(new Document("player", 1));
-        collection.createIndex(new Document("uuid", 1));
     }
 
     @Override
